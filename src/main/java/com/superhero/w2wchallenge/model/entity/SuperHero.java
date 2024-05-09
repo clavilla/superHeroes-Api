@@ -1,19 +1,17 @@
 package com.superhero.w2wchallenge.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "superheros")
+@Table(name = "superheroes")
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 public class SuperHero {
 
     @Id
@@ -25,9 +23,10 @@ public class SuperHero {
     private String power;
     @Column(name="universe")
     private String universe;
+    @CreationTimestamp
     @Column(name="created_at")
     private LocalDate createdAt;
+    @UpdateTimestamp
     @Column(name="updated_at")
     private LocalDate updatedAt;
-
 }
