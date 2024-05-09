@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/superHeroes")
@@ -20,7 +21,7 @@ public class SuperHeroController {
         this.superHeroService = superHeroService;
     }
 
-    @GetMapping
+    @GetMapping("/get All Super Heroes")
     public ResponseEntity<List<SuperHeroResponseDto>> getAllSuperHeroes() {
         List <SuperHeroResponseDto> superHeroes = superHeroService.findAll();
         return new ResponseEntity<>(superHeroes, HttpStatus.OK);
@@ -36,7 +37,7 @@ public class SuperHeroController {
     //http://localhost:8080/api/v1/superHeroes/IronMan
     @GetMapping("/name")
     public ResponseEntity<List<SuperHeroResponseDto>> getSuperHeroByNameContaining(@RequestParam String name) {
-        List <SuperHeroResponseDto> superHeroes = superHeroService.findByNameContaining(name);
+        List <SuperHeroResponseDto> superHeroes = superHeroService.findByNameContainingIgnoreCase(name.toLowerCase());
         return new ResponseEntity<>(superHeroes, HttpStatus.OK);
     }
 

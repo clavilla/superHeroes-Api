@@ -15,7 +15,7 @@ public interface SuperHeroRepository extends JpaRepository<SuperHero, Long> {
     @NonNull
     Optional<SuperHero> findById(@NonNull Long id);
 
-    List<SuperHero> findByNameContaining(String name);
+    List<SuperHero> findByNameContainingIgnoreCase(String name);
 
     void deleteById(@NonNull Long id);
 

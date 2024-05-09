@@ -40,8 +40,8 @@ public class SuperHeroService {
     }
 
     @Transactional(readOnly = true)
-    public List<SuperHeroResponseDto> findByNameContaining(String name) {
-        List<SuperHero> superHeroList = superHeroRepository.findByNameContaining(name);
+    public List<SuperHeroResponseDto> findByNameContainingIgnoreCase(String name) {
+        List<SuperHero> superHeroList = superHeroRepository.findByNameContainingIgnoreCase(name);
         return superHeroMapper.convertToListDto(superHeroList);
     }
 
