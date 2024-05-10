@@ -21,7 +21,7 @@ public class SuperHeroController {
         this.superHeroService = superHeroService;
     }
 
-    @GetMapping("/get All Super Heroes")
+    @GetMapping("/getAllSuperHeroes")
     public ResponseEntity<List<SuperHeroResponseDto>> getAllSuperHeroes() {
         List <SuperHeroResponseDto> superHeroes = superHeroService.findAll();
         return new ResponseEntity<>(superHeroes, HttpStatus.OK);
