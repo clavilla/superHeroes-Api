@@ -27,14 +27,12 @@ public class SuperHeroController {
         return new ResponseEntity<>(superHeroes, HttpStatus.OK);
     }
 
-    //http://localhost:8080/api/v1/superHeroes/4
     @GetMapping("/{id}")
     public ResponseEntity<SuperHeroResponseDto> getSuperHeroById(@PathVariable Long id) {
         SuperHeroResponseDto superHero = superHeroService.findById(id);
         return new ResponseEntity<>(superHero, HttpStatus.OK);
     }
 
-    //http://localhost:8080/api/v1/superHeroes/IronMan
     @GetMapping("/name")
     public ResponseEntity<List<SuperHeroResponseDto>> getSuperHeroByNameContaining(@RequestParam String name) {
         List <SuperHeroResponseDto> superHeroes = superHeroService.findByNameContainingIgnoreCase(name.toLowerCase());
@@ -48,7 +46,6 @@ public class SuperHeroController {
         return new ResponseEntity<>(newSuperHero, HttpStatus.CREATED);
     }
 
-    //http://localhost:8080/api/v1/superHeroes/4
     @PutMapping("/{id}")
     public ResponseEntity<SuperHeroResponseDto> updateSuperHero(
             @PathVariable Long id, @Validated @RequestBody SuperHeroRequestDto superHeroDto) {
@@ -56,7 +53,6 @@ public class SuperHeroController {
         return new ResponseEntity<>(updatedSuperHero, HttpStatus.OK);
     }
 
-    //http://localhost:8080/api/v1/superHeroes/4
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSuperHero(@PathVariable Long id) {
         superHeroService.deleteById(id);
